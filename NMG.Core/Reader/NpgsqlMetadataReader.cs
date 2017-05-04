@@ -39,7 +39,8 @@ namespace NMG.Core.Reader
                             from information_schema.constraint_column_usage a
                             inner join information_schema.table_constraints b on a.constraint_name=b.constraint_name
                             inner join  information_schema.columns c on a.column_name=c.column_name and a.table_name=c.table_name
-                            where a.table_schema='{1}' and a.table_name='{0}' and b.constraint_type in ('PRIMARY KEY')
+                            and a.table_schema = c.table_schema
+			    where a.table_schema='{1}' and a.table_name='{0}' and b.constraint_type in ('PRIMARY KEY')
                             union
                             select
                             a.column_name
